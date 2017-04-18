@@ -6,7 +6,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="GisLayerFragment"
+        android:text="CollectDataFragment"
         android:textColor="@color/amber_primary" />
     <!-- MapView -->
     <!--<com.esri.arcgisruntime.mapping.view.MapView-->

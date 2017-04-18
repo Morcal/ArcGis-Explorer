@@ -1,7 +1,5 @@
-package com.lyqdhgo.environment.ui.gic;
+package com.lyqdhgo.environment.ui;
 
-import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
@@ -17,9 +15,14 @@ import com.lyqdhgo.environment.R;
 import com.lyqdhgo.environment.common.base.BaseActivity;
 import com.lyqdhgo.environment.common.base.BaseMainFragment;
 import com.lyqdhgo.environment.common.utils.BottomNavigationViewHelper;
+import com.lyqdhgo.environment.ui.collect.CollectFragment;
+import com.lyqdhgo.environment.ui.doc.DocFragment;
+import com.lyqdhgo.environment.ui.gic.ArcGisFragment;
+import com.lyqdhgo.environment.ui.statistic.StatisticFragment;
 
 import butterknife.BindView;
 import me.yokeyword.fragmentation.SupportFragment;
+import me.yokeyword.fragmentation.anim.FragmentAnimator;
 import me.yokeyword.fragmentation.helper.FragmentLifecycleCallbacks;
 
 public class MainActivity extends BaseActivity
@@ -58,11 +61,10 @@ public class MainActivity extends BaseActivity
         BottomNavigationViewHelper.disableShiftMode(navigation);
 
         //loadFragment
-
         mFragments[FIRST] = ArcGisFragment.newInstance();
-        mFragments[SECOND] = ArcGisFragment.newInstance();
-        mFragments[THIRD] = ArcGisFragment.newInstance();
-        mFragments[FOURTH] = ArcGisFragment.newInstance();
+        mFragments[SECOND] = CollectFragment.newInstance();
+        mFragments[THIRD] = StatisticFragment.newInstance();
+        mFragments[FOURTH] = DocFragment.newInstance();
 
         loadMultipleRootFragment(R.id.fragment_content, FIRST,
                 mFragments[FIRST],
@@ -77,6 +79,11 @@ public class MainActivity extends BaseActivity
                 Log.i("MainActivity", "onFragmentSupportVisible--->" + fragment.getClass().getSimpleName());
             }
         });
+    }
+
+    @Override
+    protected FragmentAnimator onCreateFragmentAnimator() {
+        return super.onCreateFragmentAnimator();
     }
 
     @Override
@@ -138,18 +145,19 @@ public class MainActivity extends BaseActivity
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
+            int position = item.getItemId();
+            switch (position) {
                 case R.id.bottom_navigation_blue:
-//                    viewPager.setCurrentItem(0);
+                    showHideFragment(mFragments[FIRST]);
                     return true;
                 case R.id.bottom_navigation_green:
-//                    viewPager.setCurrentItem(1);
+                    showHideFragment(mFragments[SECOND]);
                     return true;
                 case R.id.bottom_navigation_yellow:
-//                    viewPager.setCurrentItem(2);
+                    showHideFragment(mFragments[THIRD]);
                     return true;
                 case R.id.bottom_navigation_red:
-//                    viewPager.setCurrentItem(3);
+                    showHideFragment(mFragments[FOURTH]);
                     return true;
             }
             return false;

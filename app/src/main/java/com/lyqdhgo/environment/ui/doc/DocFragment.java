@@ -1,4 +1,4 @@
-package com.lyqdhgo.environment.ui.gic;
+package com.lyqdhgo.environment.ui.doc;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,19 +8,17 @@ import android.view.ViewGroup;
 
 import com.lyqdhgo.environment.R;
 import com.lyqdhgo.environment.common.base.BaseMainFragment;
-import com.lyqdhgo.environment.ui.gic.child.GisLayerFragment;
+import com.lyqdhgo.environment.ui.doc.child.DocDetailFragment;
 
 /**
  * Created by QiDeHong on 2017/4/17.
  */
 
-public class ArcGisFragment extends BaseMainFragment {
+public class DocFragment extends BaseMainFragment {
 
-    public static ArcGisFragment newInstance() {
-
+    public static DocFragment newInstance() {
         Bundle args = new Bundle();
-
-        ArcGisFragment fragment = new ArcGisFragment();
+        DocFragment fragment = new DocFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -38,26 +36,15 @@ public class ArcGisFragment extends BaseMainFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_arcgis, container, false);
+        View view = inflater.inflate(R.layout.fragment_doc, container, false);
         return view;
-
     }
 
     @Override
     public void onLazyInitView(@Nullable Bundle savedInstanceState) {
         super.onLazyInitView(savedInstanceState);
         if (savedInstanceState == null) {
-            loadRootFragment(R.id.fl_first_container, GisLayerFragment.newInstance());
+            loadRootFragment(R.id.fl_four_container, DocDetailFragment.newInstance());
         }
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
     }
 }
