@@ -46,7 +46,6 @@ public class GisLayerFragment extends BaseFragment {
     @Override
     protected void initEventAndData() {
         arcGISTiledMapServiceLayer = new ArcGISTiledMapServiceLayer(strMapUrl);
-
         mapView.addLayer(arcGISTiledMapServiceLayer);
         Log.i(TAG, "initEventAndData");
     }

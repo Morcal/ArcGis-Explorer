@@ -19,6 +19,7 @@ import com.lyqdhgo.environment.ui.collect.CollectFragment;
 import com.lyqdhgo.environment.ui.doc.DocFragment;
 import com.lyqdhgo.environment.ui.gic.ArcGisFragment;
 import com.lyqdhgo.environment.ui.statistic.StatisticFragment;
+import com.lyqdhgo.environment.ui.task.ToDoListFragment;
 
 import butterknife.BindView;
 import me.yokeyword.fragmentation.SupportFragment;
@@ -40,8 +41,9 @@ public class MainActivity extends BaseActivity
     public static final int SECOND = 1;
     public static final int THIRD = 2;
     public static final int FOURTH = 3;
+    public static final int FIVE = 4;
 
-    private SupportFragment[] mFragments = new SupportFragment[4];
+    private SupportFragment[] mFragments = new SupportFragment[5];
 
     @Override
     protected int getLayout() {
@@ -63,14 +65,16 @@ public class MainActivity extends BaseActivity
         //loadFragment
         mFragments[FIRST] = ArcGisFragment.newInstance();
         mFragments[SECOND] = CollectFragment.newInstance();
-        mFragments[THIRD] = StatisticFragment.newInstance();
-        mFragments[FOURTH] = DocFragment.newInstance();
+        mFragments[THIRD] = ToDoListFragment.newInstance();
+        mFragments[FOURTH] = StatisticFragment.newInstance();
+        mFragments[FIVE] = DocFragment.newInstance();
 
         loadMultipleRootFragment(R.id.fragment_content, FIRST,
                 mFragments[FIRST],
                 mFragments[SECOND],
                 mFragments[THIRD],
-                mFragments[FOURTH]);
+                mFragments[FOURTH],
+                mFragments[FIVE]);
         // 可以监听该Activity下的所有Fragment的18个 生命周期方法
         registerFragmentLifecycleCallbacks(new FragmentLifecycleCallbacks() {
 
@@ -153,11 +157,14 @@ public class MainActivity extends BaseActivity
                 case R.id.bottom_navigation_green:
                     showHideFragment(mFragments[SECOND]);
                     return true;
-                case R.id.bottom_navigation_yellow:
+                case R.id.bottom_navigation_gray:
                     showHideFragment(mFragments[THIRD]);
                     return true;
-                case R.id.bottom_navigation_red:
+                case R.id.bottom_navigation_yellow:
                     showHideFragment(mFragments[FOURTH]);
+                    return true;
+                case R.id.bottom_navigation_red:
+                    showHideFragment(mFragments[FIVE]);
                     return true;
             }
             return false;
