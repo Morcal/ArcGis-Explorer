@@ -48,6 +48,7 @@ public abstract class BaseFragment extends SupportFragment {
                 isInited = true;
             }
         }
+        initEventAndData();
     }
 
     @Override

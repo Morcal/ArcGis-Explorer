@@ -1,12 +1,13 @@
 package com.lyqdhgo.environment.ui.gic.child;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 
-import com.esri.arcgisruntime.data.ServiceFeatureTable;
-import com.esri.arcgisruntime.layers.FeatureLayer;
-import com.esri.arcgisruntime.mapping.ArcGISMap;
-import com.esri.arcgisruntime.mapping.Basemap;
-import com.esri.arcgisruntime.mapping.view.MapView;
+import com.esri.android.map.MapView;
+import com.esri.android.map.ags.ArcGISTiledMapServiceLayer;
 import com.lyqdhgo.environment.R;
 import com.lyqdhgo.environment.common.base.BaseFragment;
 
@@ -17,9 +18,12 @@ import butterknife.BindView;
  */
 
 public class GisLayerFragment extends BaseFragment {
+    private static final String TAG = GisLayerFragment.class.getSimpleName();
+    private String strMapUrl = "http://map.geoq.cn/ArcGIS/rest/services/ChinaOnlineCommunity/MapServer";
+    private ArcGISTiledMapServiceLayer arcGISTiledMapServiceLayer = null;
 
-//    @BindView(R.id.mapView)
-//    MapView mMapView;
+    @BindView(R.id.map)
+    MapView mapView;
 
     public static GisLayerFragment newInstance() {
         Bundle args = new Bundle();
@@ -34,27 +38,17 @@ public class GisLayerFragment extends BaseFragment {
     }
 
     @Override
-    protected void initEventAndData() {
-//        setupMap();
-//        addTrailheadsLayer();
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        Log.i(TAG, "onViewCreated");
+        super.onViewCreated(view, savedInstanceState);
     }
-//
-//    private void setupMap() {
-//        if (mMapView != null) {
-//            Basemap.Type basemapType = Basemap.Type.IMAGERY_WITH_LABELS_VECTOR;
-//            double latitude = 34.05293;
-//            double longitude = -118.24368;
-//            int levelOfDetail = 11;
-//            ArcGISMap map = new ArcGISMap(basemapType, latitude, longitude, levelOfDetail);
-//            mMapView.setMap(map);
-//        }
-//    }
-//
-//    private void addTrailheadsLayer() {
-//        String url = "https://services3.arcgis.com/GVgbJbqm8hXASVYi/arcgis/rest/services/Trailheads/FeatureServer/";
-//        ServiceFeatureTable serviceFeatureTable = new ServiceFeatureTable(url);
-//        FeatureLayer featureLayer = new FeatureLayer(serviceFeatureTable);
-//        ArcGISMap map = mMapView.getMap();
-//        map.getOperationalLayers().add(featureLayer);
-//    }
+
+    @Override
+    protected void initEventAndData() {
+        arcGISTiledMapServiceLayer = new ArcGISTiledMapServiceLayer(strMapUrl);
+
+        mapView.addLayer(arcGISTiledMapServiceLayer);
+        Log.i(TAG, "initEventAndData");
+    }
+
 }
