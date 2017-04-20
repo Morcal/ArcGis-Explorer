@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 
 import com.lyqdhgo.environment.R;
 import com.lyqdhgo.environment.common.base.BaseMainFragment;
-import com.lyqdhgo.environment.ui.doc.child.DocDetailFragment;
 import com.lyqdhgo.environment.ui.statistic.child.ChatFragment;
 
 /**

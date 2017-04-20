@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 
 import com.lyqdhgo.environment.R;
 import com.lyqdhgo.environment.common.base.BaseMainFragment;
-import com.lyqdhgo.environment.ui.doc.child.DocDetailFragment;
+import com.lyqdhgo.environment.ui.doc.child.DocListFragment;
 
 /**
  * Created by QiDeHong on 2017/4/17.
@@ -44,7 +44,7 @@ public class DocFragment extends BaseMainFragment {
     public void onLazyInitView(@Nullable Bundle savedInstanceState) {
         super.onLazyInitView(savedInstanceState);
         if (savedInstanceState == null) {
-            loadRootFragment(R.id.fl_four_container, DocDetailFragment.newInstance());
+            loadRootFragment(R.id.fl_four_container, DocListFragment.newInstance());
         }
     }
 }
