@@ -3,16 +3,15 @@ package com.lyqdhgo.environment.ui.task.child;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
+import android.transition.Fade;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -22,6 +21,7 @@ import com.chad.library.adapter.base.listener.OnItemSwipeListener;
 import com.lyqdhgo.environment.R;
 import com.lyqdhgo.environment.adapter.ItemDragAdapter;
 import com.lyqdhgo.environment.common.base.BaseFragment;
+import com.lyqdhgo.environment.common.helper.DetailTransition;
 import com.lyqdhgo.environment.util.ToastUtils;
 
 import java.util.ArrayList;
@@ -135,6 +135,24 @@ public class ToDoListFragment extends BaseFragment {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 ToastUtils.showShortToast("点击了" + position);
+                ToDoDetailFragment fragment = ToDoDetailFragment.newInstance(mAdapter.getItem(position));
+
+                // 这里是使用SharedElement的用例
+                // LOLLIPOP(5.0)系统的 SharedElement支持有 系统BUG， 这里判断大于 > LOLLIPOP
+                if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
+                    setExitTransition(new Fade());
+                    fragment.setEnterTransition(new Fade());
+                    fragment.setSharedElementReturnTransition(new DetailTransition());
+                    fragment.setSharedElementEnterTransition(new DetailTransition());
+
+                    // 25.1.0以下的support包,Material过渡动画只有在进栈时有,返回时没有;
+                    // 25.1.0+的support包，SharedElement正常
+                    fragment.transaction()
+//                            .addSharedElement(adapter.getViewByPosition(position,view.getId()), getString(R.string.image_transition))
+//                            .addSharedElement(((FirstHomeAdapter.VH) vh).tvTitle, "tv")
+                            .commit();
+                }
+                start(fragment);
             }
         });
     }

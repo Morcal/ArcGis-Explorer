@@ -30,4 +30,5 @@ public class ItemDragAdapter extends BaseItemDraggableAdapter<String, BaseViewHo
         }
         helper.setText(R.id.tv, item);
     }
+
 }
