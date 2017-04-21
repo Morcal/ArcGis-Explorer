@@ -19,6 +19,8 @@ allprojects {
         maven {
             url'http://dl.bintray.com/esri/arcgis'
         }
+        // Base RecycleView Adapter Helper
+        maven { url "https://jitpack.io" }
     }
 }
 

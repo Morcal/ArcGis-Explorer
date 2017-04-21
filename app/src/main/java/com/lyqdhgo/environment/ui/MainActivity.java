@@ -19,7 +19,8 @@ import com.lyqdhgo.environment.ui.collect.CollectFragment;
 import com.lyqdhgo.environment.ui.doc.DocFragment;
 import com.lyqdhgo.environment.ui.gic.ArcGisFragment;
 import com.lyqdhgo.environment.ui.statistic.StatisticFragment;
-import com.lyqdhgo.environment.ui.task.ToDoListFragment;
+import com.lyqdhgo.environment.ui.task.TaskFragment;
+import com.lyqdhgo.environment.ui.task.child.ToDoListFragment;
 
 import butterknife.BindView;
 import me.yokeyword.fragmentation.SupportFragment;
@@ -65,7 +66,7 @@ public class MainActivity extends BaseActivity
         //loadFragment
         mFragments[FIRST] = ArcGisFragment.newInstance();
         mFragments[SECOND] = CollectFragment.newInstance();
-        mFragments[THIRD] = ToDoListFragment.newInstance();
+        mFragments[THIRD] = TaskFragment.newInstance();
         mFragments[FOURTH] = StatisticFragment.newInstance();
         mFragments[FIVE] = DocFragment.newInstance();
 

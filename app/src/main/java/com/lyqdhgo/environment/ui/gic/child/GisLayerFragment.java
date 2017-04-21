@@ -46,6 +46,8 @@ public class GisLayerFragment extends BaseFragment {
     @Override
     protected void initEventAndData() {
         arcGISTiledMapServiceLayer = new ArcGISTiledMapServiceLayer(strMapUrl);
+        mapView.centerAndZoom(98.219116, 26.933038, 0.1f);
+        mapView.setEsriLogoVisible(false);
         mapView.addLayer(arcGISTiledMapServiceLayer);
         Log.i(TAG, "initEventAndData");
     }

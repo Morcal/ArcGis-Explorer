@@ -10,6 +10,7 @@ import android.view.WindowManager;
 
 import com.github.moduth.blockcanary.BlockCanaryContext;
 import com.github.moduth.blockcanary.internal.BlockInfo;
+import com.lyqdhgo.environment.util.Utils;
 
 import java.io.File;
 import java.util.HashSet;
@@ -24,7 +25,7 @@ import java.util.Set;
 
 public class App extends Application {
 
-//    private AppComponent appConponent;
+    //    private AppComponent appConponent;
     private static App app;
     private Set<Activity> allActivities;
 
@@ -36,7 +37,6 @@ public class App extends Application {
     public static App getInstance() {
         return app;
     }
-
 
     @Override
     protected void attachBaseContext(Context base) {
@@ -70,7 +70,7 @@ public class App extends Application {
     }
 
     public void getScreenSize() {
-        WindowManager windowManager = (WindowManager)this.getSystemService(Context.WINDOW_SERVICE);
+        WindowManager windowManager = (WindowManager) this.getSystemService(Context.WINDOW_SERVICE);
         DisplayMetrics dm = new DisplayMetrics();
         Display display = windowManager.getDefaultDisplay();
         display.getMetrics(dm);
@@ -78,7 +78,7 @@ public class App extends Application {
         DIMEN_DPI = dm.densityDpi;
         SCREEN_WIDTH = dm.widthPixels;
         SCREEN_HEIGHT = dm.heightPixels;
-        if(SCREEN_WIDTH > SCREEN_HEIGHT) {
+        if (SCREEN_WIDTH > SCREEN_HEIGHT) {
             int t = SCREEN_HEIGHT;
             SCREEN_HEIGHT = SCREEN_WIDTH;
             SCREEN_WIDTH = t;
@@ -86,11 +86,11 @@ public class App extends Application {
     }
 
 
-
     @Override
     public void onCreate() {
         super.onCreate();
         app = this;
+        Utils.init(this);
         initAppComponent();
 //        AutoLayoutConifg.getInstance().useDeviceSize();
 //        getScreenSize();
@@ -105,7 +105,7 @@ public class App extends Application {
 //        CrashHandler.getInstance().initCrashHandler(this);
     }
 
-//    public AppComponent getAppComponent() {
+    //    public AppComponent getAppComponent() {
 //        return appConponent;
 //    }
 //

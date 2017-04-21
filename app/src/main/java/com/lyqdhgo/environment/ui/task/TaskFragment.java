@@ -8,17 +8,17 @@ import android.view.ViewGroup;
 
 import com.lyqdhgo.environment.R;
 import com.lyqdhgo.environment.common.base.BaseMainFragment;
-import com.lyqdhgo.environment.ui.statistic.child.ChatFragment;
+import com.lyqdhgo.environment.ui.task.child.ToDoListFragment;
 
 /**
- * Created by QiDeHong on 2017/4/17.
+ * Created by QiDeHong on 2017/4/21.
  */
 
-public class ToDoListFragment extends BaseMainFragment {
+public class TaskFragment extends BaseMainFragment {
 
-    public static ToDoListFragment newInstance() {
+    public static TaskFragment newInstance() {
         Bundle args = new Bundle();
-        ToDoListFragment fragment = new ToDoListFragment();
+        TaskFragment fragment = new TaskFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -36,12 +36,15 @@ public class ToDoListFragment extends BaseMainFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_todolist, container, false);
+        View view = inflater.inflate(R.layout.fragment_task, container, false);
         return view;
     }
 
     @Override
     public void onLazyInitView(@Nullable Bundle savedInstanceState) {
         super.onLazyInitView(savedInstanceState);
+        if (savedInstanceState == null) {
+            loadRootFragment(R.id.fl_task_container, ToDoListFragment.newInstance());
+        }
     }
 }
