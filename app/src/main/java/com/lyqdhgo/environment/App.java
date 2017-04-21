@@ -13,6 +13,8 @@ import com.github.moduth.blockcanary.internal.BlockInfo;
 import com.lyqdhgo.environment.util.Utils;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -28,7 +30,8 @@ public class App extends Application {
     //    private AppComponent appConponent;
     private static App app;
     private Set<Activity> allActivities;
-
+    public static List<?> images=new ArrayList<>();
+    public static List<String> titles=new ArrayList<>();
     public static int SCREEN_WIDTH = -1;
     public static int SCREEN_HEIGHT = -1;
     public static float DIMEN_RATE = -1.0F;
@@ -92,6 +95,12 @@ public class App extends Application {
         app = this;
         Utils.init(this);
         initAppComponent();
+        String[] urls = getResources().getStringArray(R.array.url);
+        String[] tips = getResources().getStringArray(R.array.title);
+        List list = Arrays.asList(urls);
+        images = new ArrayList(list);
+        List list1 = Arrays.asList(tips);
+        titles= new ArrayList(list1);
 //        AutoLayoutConifg.getInstance().useDeviceSize();
 //        getScreenSize();
 
