@@ -94,6 +94,8 @@ dependencies {
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.13'
     // banner
     compile 'com.youth.banner:banner:1.4.9'  //最新版本
+    // chart
+    compile 'com.github.lecho:hellocharts-library:1.5.8@aar'
     //Camera
     compile 'com.github.florent37:camerafragment:1.0.1'
     testCompile 'junit:junit:4.12'
