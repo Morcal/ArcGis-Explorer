@@ -160,7 +160,7 @@ public class ToDoListFragment extends BaseFragment {
     private List<String> generateData(int size) {
         ArrayList<String> data = new ArrayList<>(size);
         for (int i = 0; i < size; i++) {
-            data.add("item " + i);
+            data.add("Task " + i);
         }
         return data;
     }

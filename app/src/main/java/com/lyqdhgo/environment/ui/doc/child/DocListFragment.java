@@ -6,7 +6,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
@@ -16,7 +15,6 @@ import com.lyqdhgo.environment.adapter.DocListAdapter;
 import com.lyqdhgo.environment.common.base.BaseFragment;
 import com.lyqdhgo.environment.util.GlideImageLoader;
 import com.lyqdhgo.environment.util.ToastUtils;
-import com.lyqdhgo.environment.weight.DividerDecoration;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
@@ -30,7 +28,7 @@ import butterknife.BindView;
  * Created by QiDeHong on 2017/4/18.
  */
 
-public class DocListFragment extends BaseFragment implements OnBannerListener {
+public class DocListFragment extends BaseFragment implements OnBannerListener, DocListAdapter.OnRecyclerViewItemClickListener {
 
     private DocListAdapter mAdapter;
     private ArrayList<String> listData;
@@ -129,6 +127,7 @@ public class DocListFragment extends BaseFragment implements OnBannerListener {
         mAdapter = new DocListAdapter(listData);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.refresh();
+        mAdapter.setOnItemClickListener(this);
     }
 
     @Override
@@ -166,6 +165,12 @@ public class DocListFragment extends BaseFragment implements OnBannerListener {
 
     @Override
     public void OnBannerClick(int position) {
-        ToastUtils.showLongToast("click:" + position);
+        ToastUtils.showLongToast("click banner:" + position);
+    }
+
+    @Override
+    public void onItemClick(View view, String data) {
+        ToastUtils.showLongToast("click list:" + view.getId());
+
     }
 }

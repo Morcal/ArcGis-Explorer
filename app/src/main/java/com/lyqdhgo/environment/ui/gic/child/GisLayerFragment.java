@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.esri.android.map.MapView;
 import com.esri.android.map.ags.ArcGISTiledMapServiceLayer;
+import com.esri.android.map.event.OnZoomListener;
 import com.lyqdhgo.environment.R;
 import com.lyqdhgo.environment.common.base.BaseFragment;
 
@@ -48,6 +49,18 @@ public class GisLayerFragment extends BaseFragment {
         arcGISTiledMapServiceLayer = new ArcGISTiledMapServiceLayer(strMapUrl);
         mapView.centerAndZoom(98.219116, 26.933038, 0.1f);
         mapView.setEsriLogoVisible(false);
+        mapView.setOnZoomListener(new OnZoomListener() {
+            @Override
+            public void preAction(float v, float v1, double v2) {
+                Log.i(TAG,v+"-"+v1+"-"+v2);
+            }
+
+            @Override
+            public void postAction(float v, float v1, double v2) {
+                Log.i(TAG,v+"-"+v1+"-"+v2);                Log.i(TAG,v+"-"+v1+"-"+v2);
+
+            }
+        });
         mapView.addLayer(arcGISTiledMapServiceLayer);
         Log.i(TAG, "initEventAndData");
     }

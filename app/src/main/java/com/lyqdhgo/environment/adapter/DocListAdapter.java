@@ -15,8 +15,10 @@ import java.util.Collections;
 /**
  * DocListAdapter
  */
-public class DocListAdapter extends RecyclerView.Adapter<DocListAdapter.ViewHolder> {
+public class DocListAdapter extends RecyclerView.Adapter<DocListAdapter.ViewHolder> implements View.OnClickListener {
+
     public ArrayList<String> datas = null;
+    private OnRecyclerViewItemClickListener mOnItemClickListener = null;
 
     public DocListAdapter(ArrayList<String> datas) {
         this.datas = datas;
@@ -26,6 +28,8 @@ public class DocListAdapter extends RecyclerView.Adapter<DocListAdapter.ViewHold
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.list_item_doc, viewGroup, false);
+        //将创建的View注册点击事件
+        view.setOnClickListener(this);
         return new ViewHolder(view);
     }
 
@@ -41,6 +45,14 @@ public class DocListAdapter extends RecyclerView.Adapter<DocListAdapter.ViewHold
         return datas.size();
     }
 
+    @Override
+    public void onClick(View view) {
+        if (mOnItemClickListener != null) {
+            //注意这里使用getTag方法获取数据
+            mOnItemClickListener.onItemClick(view, (String) view.getTag());
+        }
+    }
+
     //自定义的ViewHolder，持有每个Item的的所有界面元素
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView mTextView;
@@ -49,5 +61,14 @@ public class DocListAdapter extends RecyclerView.Adapter<DocListAdapter.ViewHold
             super(view);
             mTextView = (TextView) view.findViewById(R.id.text);
         }
+    }
+
+    public void setOnItemClickListener(OnRecyclerViewItemClickListener listener) {
+        this.mOnItemClickListener = listener;
+    }
+
+    //define interface
+    public static interface OnRecyclerViewItemClickListener {
+        void onItemClick(View view, String data);
     }
 }
