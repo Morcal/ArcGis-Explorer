@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.support.multidex.MultiDex;
+import android.support.multidex.MultiDexApplication;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
@@ -25,7 +26,7 @@ import java.util.Set;
  * Created by cuieney on 17/2/21.
  */
 
-public class App extends Application {
+public class App extends MultiDexApplication {
 
     //    private AppComponent appConponent;
     private static App app;
