@@ -16,4 +16,14 @@
         <attr name="indicator_vertical_line_color" format="color" />
         <attr name="indicator_isBottom_line" format="boolean" />
     </declare-styleable>
+
+    <!--带旋转动画的ImageView-->
+    <declare-styleable name="waterRipplesView">
+        <!--波的总个数-->
+        <attr name="waveCount" format="integer" />
+        <!--程序一开始就播放波纹涟漪动画-->
+        <attr name="waveOnLoad" format="boolean" />
+        <!--波的颜色-->
+        <attr name="waveColor" format="color" />
+    </declare-styleable>
 </resources>

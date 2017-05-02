@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import com.lyqdhgo.environment.R;
 import com.lyqdhgo.environment.common.base.BaseMainFragment;
 import com.lyqdhgo.environment.ui.gic.child.GisLayerFragment;
+import com.lyqdhgo.environment.ui.gic.child.MapFragment;
 
 /**
  * Created by QiDeHong on 2017/4/17.
@@ -47,7 +48,8 @@ public class ArcGisFragment extends BaseMainFragment {
     public void onLazyInitView(@Nullable Bundle savedInstanceState) {
         super.onLazyInitView(savedInstanceState);
         if (savedInstanceState == null) {
-            loadRootFragment(R.id.fl_first_container, GisLayerFragment.newInstance());
+//            loadRootFragment(R.id.fl_first_container, GisLayerFragment.newInstance());
+            loadRootFragment(R.id.fl_first_container, MapFragment.newInstance());
         }
     }
 
