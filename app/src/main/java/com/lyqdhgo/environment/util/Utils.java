@@ -2,6 +2,14 @@ package com.lyqdhgo.environment.util;
 
 import android.content.Context;
 
+import com.amap.api.maps2d.model.BitmapDescriptor;
+import com.amap.api.maps2d.model.BitmapDescriptorFactory;
+import com.amap.api.maps2d.model.LatLng;
+import com.amap.api.maps2d.model.MarkerOptions;
+import com.lyqdhgo.environment.R;
+
+import java.util.ArrayList;
+
 /**
  * Created by QiDeHong on 2017/4/21.
  */
@@ -30,5 +38,54 @@ public class Utils {
     public static Context getContext() {
         if (context != null) return context;
         throw new NullPointerException("u should init first");
+    }
+
+    /***
+     * Map Marker gif
+     * @return
+     */
+    public static ArrayList setMapMarkerLayer() {
+        ArrayList<BitmapDescriptor> giflist = new ArrayList<BitmapDescriptor>();
+        giflist.add(BitmapDescriptorFactory
+                .fromResource(R.drawable.a));
+        giflist.add(BitmapDescriptorFactory
+                .fromResource(R.drawable.b));
+        giflist.add(BitmapDescriptorFactory
+                .fromResource(R.drawable.c));
+        giflist.add(BitmapDescriptorFactory
+                .fromResource(R.drawable.d));
+        return giflist;
+    }
+
+    public static void setDefaultMarkerOption(LatLng latLng, String title, String snippet) {
+        MarkerOptions markerOption = new MarkerOptions();
+        markerOption.position(latLng);
+        markerOption.title(title).snippet(snippet);
+        markerOption.draggable(true);
+        markerOption.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
+    }
+
+    public static void setMarkerOption(LatLng latLng, String title, String snippet, int drawableId) {
+        MarkerOptions markerOption = new MarkerOptions();
+        markerOption.position(latLng);
+        markerOption.title(title).snippet(snippet);
+        markerOption.draggable(true);
+        markerOption.icon(BitmapDescriptorFactory.fromResource(drawableId));
+    }
+
+    public static void setGifMarkerOption(LatLng latLng, String title, String snippet, ArrayList layers, int time) {
+        MarkerOptions markerOption = new MarkerOptions();
+        markerOption.anchor(0.5f, 0.5f)
+                .position(latLng).title(title).snippet(snippet).icons(layers)
+                .draggable(true).period(time);
+    }
+
+
+    public static void addMarker() {
+
+    }
+
+    public static void addMarkerofGif() {
+
     }
 }
