@@ -22,7 +22,7 @@ public class CollectFragmentPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         if (position == 0) {
-            return EditDataFragment.newInstance();
+            return EditDataFragment.newInstance("");
         } else {
             return PhotoFragment.newInstance();
         }

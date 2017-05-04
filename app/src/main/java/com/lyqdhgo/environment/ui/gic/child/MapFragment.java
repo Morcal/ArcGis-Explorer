@@ -1,7 +1,9 @@
 package com.lyqdhgo.environment.ui.gic.child;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.transition.Fade;
 import android.view.View;
 import android.widget.Toast;
 
@@ -13,6 +15,10 @@ import com.amap.api.maps2d.model.Marker;
 import com.amap.api.maps2d.model.MarkerOptions;
 import com.lyqdhgo.environment.R;
 import com.lyqdhgo.environment.common.base.BaseFragment;
+import com.lyqdhgo.environment.common.helper.DetailTransition;
+import com.lyqdhgo.environment.ui.collect.child.EditDataFragment;
+import com.lyqdhgo.environment.ui.task.child.ToDoDetailFragment;
+import com.lyqdhgo.environment.util.ToastUtils;
 import com.lyqdhgo.environment.util.Utils;
 
 import butterknife.BindView;
@@ -23,14 +29,17 @@ import butterknife.BindView;
 
 public class MapFragment extends BaseFragment implements AMap.OnMarkerClickListener {
 
+    public static final String BeiJing = "北京市";
+    public static final String ZhengZhou = "郑州市";
     public static final LatLng BEIJING = new LatLng(39.90403, 116.407525);// 北京市经纬度
     public static final LatLng ZHENGZHOU = new LatLng(34.7466, 113.625367);// 郑州市经纬度
-    private LatLng latlng = new LatLng(36.061, 103.834);
+
+    private LatLng LATLNG = new LatLng(36.061, 103.834);
 
     @BindView(R.id.map)
     MapView mapView;
     private AMap aMap;
-    private Marker marker;
+    private Marker marker1, marker2;
     private MarkerOptions markerOption;
 
     public static MapFragment newInstance() {
@@ -68,30 +77,16 @@ public class MapFragment extends BaseFragment implements AMap.OnMarkerClickListe
     }
 
     private void addMarkersToMap() {
+        marker1 = aMap.addMarker(Utils.setMarkerOption(BEIJING, "北京市", "北京市：39.90403, 116.407525", R.drawable.d));
 
-        markerOption.position(BEIJING);
-        markerOption.title("北京市").snippet("北京市：39.90403, 116.407525");
-        markerOption.draggable(true);
-        markerOption.icon(BitmapDescriptorFactory
-                .fromResource(R.drawable.d));
-        marker = aMap.addMarker(markerOption);
+        aMap.addMarker(Utils.setGifMarkerOption(ZHENGZHOU, "郑州市", "", 1));
 
-
-        aMap.addMarker(new MarkerOptions().anchor(0.5f, 0.5f)
-                .position(ZHENGZHOU).title("郑州市").icons(Utils.setMapMarkerLayer())
-                .draggable(true).period(1));
-
-        drawMarkers();// 添加10个带有系统默认icon的marker
+        drawMarkers();
     }
 
     private void drawMarkers() {
-        Marker marker = aMap.addMarker(new MarkerOptions()
-                .position(latlng)
-                .title("好好学习")
-                .icon(BitmapDescriptorFactory
-                        .defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
-                .draggable(true));
-        marker.showInfoWindow();// 设置默认显示一个infowinfow
+        marker2 = aMap.addMarker(Utils.setDefaultMarkerOption(LATLNG, "好好学习", ""));
+        marker2.showInfoWindow();// 设置默认显示一个infowinfow
     }
 
     @Override
@@ -116,9 +111,35 @@ public class MapFragment extends BaseFragment implements AMap.OnMarkerClickListe
     @Override
     public boolean onMarkerClick(Marker marker) {
         if (aMap != null) {
+//            switch (marker.getTitle()) {
+//                case BeiJing:
+//
+//                    break;
+//                case ZhengZhou:
+//
+//                    break;
+//                default:
+//                    break;
+//            }
 //            jumpPoint(marker);
         }
-        Toast.makeText(getActivity(), "您点击了Marker"+marker.getTitle(), Toast.LENGTH_LONG).show();
+        startFragment(marker);
         return true;
     }
+
+    public void startFragment(Marker marker) {
+        Toast.makeText(getActivity(), "您点击了Marker" + marker.getTitle(), Toast.LENGTH_LONG).show();
+        EditDataFragment fragment = EditDataFragment.newInstance(marker.getTitle());
+        // 这里是使用SharedElement的用例
+        // LOLLIPOP(5.0)系统的 SharedElement支持有 系统BUG， 这里判断大于 > LOLLIPOP
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
+            setExitTransition(new Fade());
+            fragment.setEnterTransition(new Fade());
+            fragment.setSharedElementReturnTransition(new DetailTransition());
+            fragment.setSharedElementEnterTransition(new DetailTransition());
+            fragment.transaction().commit();
+        }
+        start(fragment);
+    }
+
 }
