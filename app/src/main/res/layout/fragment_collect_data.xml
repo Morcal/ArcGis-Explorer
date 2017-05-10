@@ -14,6 +14,33 @@
         android:text="CollectDataFragment"
         android:textColor="@color/amber_primary" />
 
+    <EditText
+        android:id="@+id/et_test1"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginRight="28dp"
+        android:layout_marginTop="23dp"
+        android:background="@drawable/edit_style"
+        android:hint="Data"
+        android:textColor="@color/color_light_blue"
+        android:textColorHint="#00ce9b"
+        android:textCursorDrawable="@null"
+        android:textSize="15sp" />
+    <EditText
+        android:id="@+id/et_test2"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginRight="28dp"
+        android:layout_marginTop="23dp"
+        android:background="@drawable/edit_style"
+        android:hint="data"
+        android:textColor="@color/color_light_blue"
+        android:textColorHint="#00ce9b"
+        android:textCursorDrawable="@null"
+        android:textSize="15sp" />
+
     <com.lyqdhgo.environment.weight.WaterRipplesView
         android:id="@+id/wave"
         android:layout_width="180dp"

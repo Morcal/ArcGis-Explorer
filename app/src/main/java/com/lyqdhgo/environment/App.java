@@ -8,6 +8,7 @@ import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
 
+import com.facebook.stetho.Stetho;
 import com.lyqdhgo.environment.util.Utils;
 
 import java.util.ArrayList;
@@ -97,6 +98,9 @@ public class App extends MultiDexApplication {
         images = new ArrayList(list);
         List list1 = Arrays.asList(tips);
         titles = new ArrayList(list1);
+
+        // 调试
+        Stetho.initializeWithDefaults(this);
 //        AutoLayoutConifg.getInstance().useDeviceSize();
 //        getScreenSize();
 

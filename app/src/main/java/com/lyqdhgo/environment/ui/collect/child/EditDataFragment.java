@@ -3,6 +3,7 @@ package com.lyqdhgo.environment.ui.collect.child;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.lyqdhgo.environment.R;
@@ -23,6 +24,10 @@ public class EditDataFragment extends BaseFragment {
     Button breath;
     @BindView(R.id.tv_measure_point)
     TextView measurePoint;
+    @BindView(R.id.et_test1)
+    EditText Data1;
+    @BindView(R.id.et_test2)
+    EditText Data2;
 
     public static EditDataFragment newInstance(String measure) {
         Bundle args = new Bundle();
