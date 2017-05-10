@@ -58,4 +58,11 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
         android:text="Breath" />
+    <Button
+        android:id="@+id/but_query"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:text="Breath" />
 </LinearLayout>

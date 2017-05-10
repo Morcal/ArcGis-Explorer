@@ -17,6 +17,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
+
 
 /**
  * Created by cuieney on 17/2/21.
@@ -101,6 +104,15 @@ public class App extends MultiDexApplication {
 
         // 调试
         Stetho.initializeWithDefaults(this);
+        // Realm
+        Realm.init(this);
+        RealmConfiguration config = new RealmConfiguration.Builder().build();
+        Realm.setDefaultConfiguration(config);
+//        RealmConfiguration config = new RealmConfiguration.Builder()
+//                .name("myRealm.realm")
+//                .deleteRealmIfMigrationNeeded()
+//                .build();
+//        Realm.setDefaultConfiguration(config);
 //        AutoLayoutConifg.getInstance().useDeviceSize();
 //        getScreenSize();
 
