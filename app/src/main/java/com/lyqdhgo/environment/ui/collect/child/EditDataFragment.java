@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.lyqdhgo.environment.R;
 import com.lyqdhgo.environment.common.base.BaseFragment;
 import com.lyqdhgo.environment.entity.Data;
+import com.lyqdhgo.environment.util.ToastUtils;
 import com.lyqdhgo.environment.weight.WaterRipplesView;
 
 import java.text.SimpleDateFormat;
@@ -31,7 +32,7 @@ public class EditDataFragment extends BaseFragment {
     @BindView(R.id.wave)
     WaterRipplesView wave;
     @BindView(R.id.but_breath)
-    Button breath;
+    Button submit;
     @BindView(R.id.but_query)
     Button query;
     @BindView(R.id.tv_measure_point)
@@ -58,7 +59,7 @@ public class EditDataFragment extends BaseFragment {
     protected void initEventAndData() {
         Bundle bundle = getArguments();
         measurePoint.setText(bundle.getString(MEASUREPOINT));
-        breath.setOnClickListener(new View.OnClickListener() {
+        submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 wave.breath();
@@ -91,6 +92,7 @@ public class EditDataFragment extends BaseFragment {
         data.setOneData(Data1.getText().toString().trim());
         data.setTwoData(Data2.getText().toString().trim());
         realm.commitTransaction();
+        ToastUtils.showLongToast("Submit Finished");
     }
 
     public List<Data> queryAllDog() {

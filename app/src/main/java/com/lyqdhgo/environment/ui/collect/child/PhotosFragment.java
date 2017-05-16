@@ -2,10 +2,16 @@ package com.lyqdhgo.environment.ui.collect.child;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.lyqdhgo.environment.R;
 import com.lyqdhgo.environment.common.base.BaseFragment;
@@ -26,6 +32,9 @@ public class PhotosFragment extends BaseFragment {
 
     @BindView(R.id.but_take_photo)
     Button takePhoto;
+    @BindView(R.id.recycle_photo)
+    RecyclerView recyclerView;
+    private UriAdapter mAdapter;
 
     public static PhotosFragment newInstance() {
         Bundle args = new Bundle();
@@ -41,10 +50,12 @@ public class PhotosFragment extends BaseFragment {
 
     @Override
     protected void initEventAndData() {
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setAdapter(mAdapter = new UriAdapter());
         takePhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Matisse.from(getActivity())
+                Matisse.from(PhotosFragment.this)
                         .choose(MimeType.allOf())
                         .countable(true)
                         .theme(R.style.Matisse_Zhihu)
@@ -59,6 +70,44 @@ public class PhotosFragment extends BaseFragment {
         });
     }
 
+    private static class UriAdapter extends RecyclerView.Adapter<UriAdapter.UriViewHolder> {
+
+        private List<Uri> mUris;
+
+        void setData(List<Uri> uris) {
+            mUris = uris;
+            notifyDataSetChanged();
+        }
+
+        @Override
+        public UriViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            return new UriViewHolder(
+                    (TextView) LayoutInflater.from(parent.getContext()).inflate(R.layout.uri_item, parent, false));
+        }
+
+
+        @Override
+        public void onBindViewHolder(UriViewHolder holder, int position) {
+            Uri uri = mUris.get(position);
+            holder.mUri.setText(uri.toString());
+        }
+
+        @Override
+        public int getItemCount() {
+            return mUris == null ? 0 : mUris.size();
+        }
+
+        static class UriViewHolder extends RecyclerView.ViewHolder {
+
+            private TextView mUri;
+
+            UriViewHolder(TextView uri) {
+                super(uri);
+                mUri = uri;
+            }
+        }
+    }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -67,6 +116,7 @@ public class PhotosFragment extends BaseFragment {
             for (int i = 0; i < list.size(); i++) {
                 Log.i("TAG", list.get(i).toString());
             }
+            mAdapter.setData(Matisse.obtainResult(data));
         }
     }
 }

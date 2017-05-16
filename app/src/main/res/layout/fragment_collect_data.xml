@@ -16,26 +16,26 @@
 
     <EditText
         android:id="@+id/et_test1"
-        android:layout_width="match_parent"
+        android:layout_width="80dp"
         android:layout_height="48dp"
         android:layout_marginLeft="28dp"
         android:layout_marginRight="28dp"
         android:layout_marginTop="23dp"
         android:background="@drawable/edit_style"
-        android:hint="Data"
+        android:hint="Data1"
         android:textColor="@color/color_light_blue"
         android:textColorHint="#00ce9b"
         android:textCursorDrawable="@null"
         android:textSize="15sp" />
     <EditText
         android:id="@+id/et_test2"
-        android:layout_width="match_parent"
+        android:layout_width="80dp"
         android:layout_height="48dp"
         android:layout_marginLeft="28dp"
         android:layout_marginRight="28dp"
         android:layout_marginTop="23dp"
         android:background="@drawable/edit_style"
-        android:hint="data"
+        android:hint="Data2"
         android:textColor="@color/color_light_blue"
         android:textColorHint="#00ce9b"
         android:textCursorDrawable="@null"
@@ -49,6 +49,7 @@
         android:layout_marginTop="20dp"
         app:waveColor="#00ce9b"
         app:waveCount="5"
+        android:visibility="gone"
         app:waveOnLoad="true" />
 
     <Button
@@ -57,8 +58,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
-        android:text="Breath" />
+        android:text="Submit" />
     <Button
+        android:visibility="gone"
         android:id="@+id/but_query"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -1,5 +1,6 @@
 package com.lyqdhgo.environment.ui.collect;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -60,5 +61,10 @@ public class CollectFragment extends BaseMainFragment {
 //        if (savedInstanceState == null) {
 //            loadRootFragment(R.id.fl_second_container, EditDataFragment.newInstance());
 //        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }
