@@ -1,5 +1,6 @@
 package com.lyqdhgo.environment.ui;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
@@ -175,5 +176,10 @@ public class MainActivity extends BaseActivity
     @Override
     public void onBackToFirstFragment() {
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

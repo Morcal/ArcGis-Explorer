@@ -5,7 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.lyqdhgo.environment.ui.collect.child.EditDataFragment;
-import com.lyqdhgo.environment.ui.collect.child.PhotoFragment;
+import com.lyqdhgo.environment.ui.collect.child.PhotosFragment;
 
 /**
  * Created by QiDeHong on 2017/4/19.
@@ -24,7 +24,7 @@ public class CollectFragmentPagerAdapter extends FragmentPagerAdapter {
         if (position == 0) {
             return EditDataFragment.newInstance("");
         } else {
-            return PhotoFragment.newInstance();
+            return PhotosFragment.newInstance();
         }
     }
 
