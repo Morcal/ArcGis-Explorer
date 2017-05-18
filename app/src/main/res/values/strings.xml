@@ -6,4 +6,22 @@
 
     <string name="action_settings">Settings</string>
     <string name="image_transition">image_transition</string>
+
+    <string-array name="titles">
+        <item>text_string1</item>
+        <item>text_string2</item>
+        <item>text_string3</item>
+        <item>text_string4</item>
+        <item>text_string5</item>
+        <item>text_string6</item>
+        <item>text_string7</item>
+        <item>text_string8</item>
+        <item>text_string9</item>
+        <item>text_string10</item>
+        <item>text_string11</item>
+        <item>text_string12</item>
+        <item>text_string13</item>
+        <item>text_string14</item>
+        <item>text_string15</item>
+    </string-array>
 </resources>

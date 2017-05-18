@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/fl_map"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -8,4 +8,127 @@
         android:id="@+id/map"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-</FrameLayout>
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_margin="7dp"
+        android:background="@drawable/ic_menu_share"
+        android:visibility="gone" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/lv_task"
+        android:layout_width="150dp"
+        android:layout_height="170dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:background="#30666666"
+        android:fadingEdge="none" />
+
+    <!--<ScrollView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="170dp"-->
+    <!--android:layout_alignParentTop="true"-->
+    <!--android:layout_alignParentLeft="true"-->
+    <!--android:layout_marginLeft="5dp"-->
+    <!--android:layout_marginTop="5dp">-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:background="#D999"-->
+    <!--android:orientation="vertical"-->
+    <!--android:paddingRight="5dp">-->
+
+    <!--<Button-->
+    <!--android:id="@+id/buttonScale"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="获取比例尺" />-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="vertical">-->
+
+    <!--<CheckBox-->
+    <!--android:id="@+id/scale_toggle"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_weight="1"-->
+    <!--android:checked="false"-->
+    <!--android:text="比例尺" />-->
+
+    <!--<CheckBox-->
+    <!--android:id="@+id/zoom_toggle"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_weight="1"-->
+    <!--android:checked="true"-->
+    <!--android:text="缩放按钮" />-->
+
+    <!--<CheckBox-->
+    <!--android:id="@+id/compass_toggle"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_weight="1"-->
+    <!--android:checked="false"-->
+    <!--android:text="指南针" />-->
+
+    <!--<CheckBox-->
+    <!--android:id="@+id/mylocation_toggle"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_weight="1"-->
+    <!--android:checked="false"-->
+    <!--android:text="我的位置图层" />-->
+
+    <!--<CheckBox-->
+    <!--android:id="@+id/scroll_toggle"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_weight="1"-->
+    <!--android:checked="true"-->
+    <!--android:text="滑动手势" />-->
+
+    <!--<CheckBox-->
+    <!--android:id="@+id/zoom_gestures_toggle"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_weight="1"-->
+    <!--android:checked="true"-->
+    <!--android:text="缩放手势" />-->
+
+
+    <!--<RadioGroup-->
+    <!--android:id="@+id/logo_position"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_weight="1"-->
+    <!--android:checkedButton="@+id/bottom_left"-->
+    <!--android:orientation="vertical">-->
+
+    <!--<RadioButton-->
+    <!--android:id="@+id/bottom_left"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="左下" />-->
+
+    <!--<RadioButton-->
+    <!--android:id="@+id/bottom_center"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="底部居中" />-->
+
+    <!--<RadioButton-->
+    <!--android:id="@+id/bottom_right"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="右下" />-->
+    <!--</RadioGroup>-->
+    <!--</LinearLayout>-->
+    <!--</LinearLayout>-->
+    <!--</ScrollView>-->
+</RelativeLayout>
