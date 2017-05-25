@@ -6,11 +6,11 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.lyqdhgo.environment.R;
 import com.lyqdhgo.environment.common.base.BaseActivity;
@@ -21,7 +21,6 @@ import com.lyqdhgo.environment.ui.doc.DocFragment;
 import com.lyqdhgo.environment.ui.gic.ArcGisFragment;
 import com.lyqdhgo.environment.ui.statistic.StatisticFragment;
 import com.lyqdhgo.environment.ui.task.TaskFragment;
-import com.lyqdhgo.environment.ui.task.child.ToDoListFragment;
 
 import butterknife.BindView;
 import me.yokeyword.fragmentation.SupportFragment;
@@ -30,12 +29,12 @@ import me.yokeyword.fragmentation.helper.FragmentLifecycleCallbacks;
 
 public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener, BaseMainFragment.OnBackToFirstListener {
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
-    @BindView(R.id.drawer_layout)
-    DrawerLayout drawer;
-    @BindView(R.id.nav_view)
-    NavigationView navigationView;
+//    @BindView(R.id.toolbar)
+//    Toolbar toolbar;
+//    @BindView(R.id.drawer_layout)
+//    DrawerLayout drawer;
+//    @BindView(R.id.nav_view)
+//    NavigationView navigationView;
     @BindView(R.id.bottom_navigation)
     BottomNavigationView navigation;
 
@@ -49,17 +48,21 @@ public class MainActivity extends BaseActivity
 
     @Override
     protected int getLayout() {
-        return R.layout.activity_main;
+        // set full screen
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        return R.layout.app_bar_main;
     }
 
     @Override
     protected void initEventAndData() {
-        setSupportActionBar(toolbar);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
-        navigationView.setNavigationItemSelectedListener(this);
+//        setSupportActionBar(toolbar);
+//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+//                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+//        drawer.setDrawerListener(toggle);
+//        toggle.syncState();
+//        navigationView.setNavigationItemSelectedListener(this);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         //默认 >3 的选中效果会影响ViewPager的滑动切换时的效果，故利用反射去掉
         BottomNavigationViewHelper.disableShiftMode(navigation);
@@ -92,14 +95,14 @@ public class MainActivity extends BaseActivity
         return super.onCreateFragmentAnimator();
     }
 
-    @Override
-    public void onBackPressedSupport() {
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
+//    @Override
+//    public void onBackPressedSupport() {
+//        if (drawer.isDrawerOpen(GravityCompat.START)) {
+//            drawer.closeDrawer(GravityCompat.START);
+//        } else {
+//            super.onBackPressed();
+//        }
+//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

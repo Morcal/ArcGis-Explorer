@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.lyqdhgo.environment.R;
+import com.lyqdhgo.environment.util.ToastUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -54,6 +55,7 @@ public class NormalRecyclerViewAdapter extends RecyclerView.Adapter<NormalRecycl
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    ToastUtils.showLongToast("click view->" + v.getId());
                     Log.d("NormalTextViewHolder", "onClick--> position = " + getPosition());
                 }
             });
