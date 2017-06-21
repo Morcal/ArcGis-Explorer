@@ -16,4 +16,8 @@
     <dimen name="grid_expected_size">120dp</dimen>
     <dimen name="item_margin_horizontal">24dp</dimen>
     <dimen name="item_margin_vertical">8dp</dimen>
+
+    <dimen name="horizontal_corner">20dp</dimen>
+    <dimen name="percent_text_size_large">15sp</dimen>
+
 </resources>

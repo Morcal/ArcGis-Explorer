@@ -3,17 +3,24 @@ package com.lyqdhgo.environment.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.lyqdhgo.environment.R;
 import com.lyqdhgo.environment.common.base.BaseActivity;
-import com.lyqdhgo.environment.ui.all.AllActivity;
+import com.lyqdhgo.environment.ui.Asny.AsnycActivity;
+import com.lyqdhgo.environment.ui.all.ComServiceActivity;
 import com.lyqdhgo.environment.ui.collect.EnvironCheckActivity;
 import com.lyqdhgo.environment.ui.gic.MapActivity;
-import com.lyqdhgo.environment.ui.manager.ManagerActivity;
-import com.lyqdhgo.environment.util.ToastUtils;
+import com.lyqdhgo.environment.util.Constants;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 
@@ -25,6 +32,8 @@ public class WelcomeActivity extends BaseActivity implements View.OnClickListene
     private static final String TAG = WelcomeActivity.class.getSimpleName();
     @BindView(R.id.tv_project_name)
     TextView projectName;
+    @BindView(R.id.tv_user)
+    TextView userName;
     @BindView(R.id.prl_async)
     RelativeLayout prAsync;
     @BindView(R.id.prl_collect)
@@ -45,20 +54,27 @@ public class WelcomeActivity extends BaseActivity implements View.OnClickListene
     }
 
     @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
     protected void initEventAndData() {
         init();
         prAsync.setOnClickListener(this);
         prlCollect.setOnClickListener(this);
         prlMansger.setOnClickListener(this);
+        prlAll.setOnClickListener(this);
         prlAnalysis.setOnClickListener(this);
         prlSet.setOnClickListener(this);
 
-        prlAll.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(WelcomeActivity.this, AllActivity.class));
-            }
-        });
+//        prlAll.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(WelcomeActivity.this, AllActivity.class));
+//            }
+//        });
     }
 
     private void init() {
@@ -71,18 +87,32 @@ public class WelcomeActivity extends BaseActivity implements View.OnClickListene
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.prl_async:
-                startActivity(new Intent(WelcomeActivity.this, EnvironCheckActivity.class));
+                if (!Constants.isLogin) {
+                    startActivity(new Intent(WelcomeActivity.this, LoginActivity.class));
+                } else {
+                    startActivity(new Intent(WelcomeActivity.this, AsnycActivity.class));
+                }
                 break;
             case R.id.prl_collect:
-                startActivity(new Intent(WelcomeActivity.this, MapActivity.class));
+                if (!Constants.isLogin) {
+                    startActivity(new Intent(WelcomeActivity.this, LoginActivity.class));
+                } else {
+                    startActivity(new Intent(WelcomeActivity.this, MapActivity.class));
+                }
                 break;
             case R.id.prl_manager:
-                startActivity(new Intent(WelcomeActivity.this, ManagerActivity.class));
+                if (!Constants.isLogin) {
+                    startActivity(new Intent(WelcomeActivity.this, LoginActivity.class));
+                } else {
+                    startActivity(new Intent(WelcomeActivity.this, EnvironCheckActivity.class));
+                }
                 break;
-            case R.id.all:
-                ToastUtils.showLongToast("综合服务");
-
-
+            case R.id.prl_all:
+                if (!Constants.isLogin) {
+                    startActivity(new Intent(WelcomeActivity.this, LoginActivity.class));
+                } else {
+                    startActivity(new Intent(WelcomeActivity.this, ComServiceActivity.class));
+                }
                 break;
             case R.id.prl_analysis:
                 break;
@@ -91,5 +121,18 @@ public class WelcomeActivity extends BaseActivity implements View.OnClickListene
             default:
                 break;
         }
+    }
+
+    //订阅LoginActivity发布的消息
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(String msg) {
+        Log.i(TAG, Thread.currentThread().getName() + "->MainThread->" + msg);
+        userName.setText(msg);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 }

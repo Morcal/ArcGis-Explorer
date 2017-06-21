@@ -1,1 +1,1 @@
-include ':app', ':mzbanner', ':library'
+include ':app', ':mzbanner'

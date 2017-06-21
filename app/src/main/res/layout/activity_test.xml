@@ -19,6 +19,18 @@
             android:layout_marginTop="3dp"
             android:gravity="center_horizontal"
             android:textSize="40sp" />
+
+        <TextView
+            android:id="@+id/tv_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/tv_project_name"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="18dp"
+            android:text="User"
+            android:textColor="@color/amber_primary_dark"
+            android:textSize="24sp" />
     </RelativeLayout>
 
     <LinearLayout

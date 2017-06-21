@@ -376,4 +376,13 @@
     <color name="md_blue_grey_700">#455A64</color>
     <color name="md_blue_grey_800">#37474F</color>
     <color name="md_blue_grey_900">#263238</color>
+
+    <color name="red_dark_primary_color">#D32F2F</color>
+    <color name="red_primary_color">#F44336</color>
+    <color name="red_light_primary_color">#FFCDD2</color>
+    <color name="red_text_icon_color">#FFFFFF</color>
+
+    <color name="percent_text_color_2">#A2CD5A</color>
+    <color name="progressbar_bg_color_1">#737373</color>
+
 </resources>
