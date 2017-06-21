@@ -16,6 +16,8 @@ import com.lyqdhgo.environment.ui.Asny.AsnycActivity;
 import com.lyqdhgo.environment.ui.all.ComServiceActivity;
 import com.lyqdhgo.environment.ui.collect.EnvironCheckActivity;
 import com.lyqdhgo.environment.ui.gic.MapActivity;
+import com.lyqdhgo.environment.ui.set.EmimsResultActivity;
+import com.lyqdhgo.environment.ui.statistic.StatisticActivity;
 import com.lyqdhgo.environment.util.Constants;
 
 import org.greenrobot.eventbus.EventBus;
@@ -115,8 +117,18 @@ public class WelcomeActivity extends BaseActivity implements View.OnClickListene
                 }
                 break;
             case R.id.prl_analysis:
+                if (!Constants.isLogin) {
+                    startActivity(new Intent(WelcomeActivity.this, LoginActivity.class));
+                } else {
+                    startActivity(new Intent(WelcomeActivity.this, StatisticActivity.class));
+                }
                 break;
             case R.id.prl_set:
+                if (!Constants.isLogin) {
+                    startActivity(new Intent(WelcomeActivity.this, LoginActivity.class));
+                } else {
+                    startActivity(new Intent(WelcomeActivity.this, EmimsResultActivity.class));
+                }
                 break;
             default:
                 break;

@@ -77,16 +77,25 @@
             android:label="@string/title_activity_login"
             android:screenOrientation="landscape"
             android:windowSoftInputMode="stateHidden|stateUnchanged" />
-
-        <meta-data
-            android:name="com.amap.api.v2.apikey"
-            android:value="71136717709aa8c1b1b72f5fa37b2fd4" />
-
         <activity
             android:name=".ui.all.ComServiceActivity"
             android:label="@string/title_activity_com_service"
             android:screenOrientation="landscape"
             android:windowSoftInputMode="stateHidden|stateUnchanged" />
+        <activity
+            android:name=".ui.statistic.StatisticActivity"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateHidden|stateUnchanged" />
+        <activity
+            android:name=".ui.set.EmimsResultActivity"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateHidden|stateUnchanged" />
+
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="71136717709aa8c1b1b72f5fa37b2fd4" />
+
+
     </application>
 
 </manifest>
