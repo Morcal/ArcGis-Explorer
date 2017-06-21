@@ -2,8 +2,10 @@ package com.lyqdhgo.environment.ui;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.lyqdhgo.environment.R;
 import com.lyqdhgo.environment.common.base.BaseActivity;
@@ -21,6 +23,8 @@ import butterknife.BindView;
 
 public class WelcomeActivity extends BaseActivity implements View.OnClickListener {
     private static final String TAG = WelcomeActivity.class.getSimpleName();
+    @BindView(R.id.tv_project_name)
+    TextView projectName;
     @BindView(R.id.prl_async)
     RelativeLayout prAsync;
     @BindView(R.id.prl_collect)
@@ -42,6 +46,7 @@ public class WelcomeActivity extends BaseActivity implements View.OnClickListene
 
     @Override
     protected void initEventAndData() {
+        init();
         prAsync.setOnClickListener(this);
         prlCollect.setOnClickListener(this);
         prlMansger.setOnClickListener(this);
@@ -54,6 +59,12 @@ public class WelcomeActivity extends BaseActivity implements View.OnClickListene
                 startActivity(new Intent(WelcomeActivity.this, AllActivity.class));
             }
         });
+    }
+
+    private void init() {
+        Typeface typeFace = Typeface.createFromAsset(getAssets(), "fonts/HYXingKaiJ.ttf");
+        projectName.setTypeface(typeFace);
+        projectName.setText("夹岩水利枢纽工程环境管理信息平台\n终端系统");
     }
 
     @Override
