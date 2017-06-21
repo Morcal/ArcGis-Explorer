@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'android-apt'
 apply plugin: 'realm-android'
+apply plugin: 'org.greenrobot.greendao' // apply plugin
 
 android {
     compileSdkVersion 25
@@ -30,6 +31,12 @@ android {
         exclude 'META-INF/LGPL2.1'
         exclude 'META-INF/LICENSE'
         exclude 'META-INF/NOTICE'
+    }
+
+    greendao {
+        schemaVersion 1
+        daoPackage 'com.lyqdhgo.environment.greendao.gen'
+        targetGenDir 'src/main/java'
     }
 
 }
@@ -104,13 +111,34 @@ dependencies {
     compile 'com.github.lecho:hellocharts-library:1.5.8@aar'
     // 高德地图
     compile 'com.amap.api:search:latest.integration'
-    compile 'com.amap.api:map2d:latest.integration'
+//    compile 'com.amap.api:map2d:latest.integration'
+
+    compile 'com.amap.api:3dmap:latest.integration'
     compile 'com.amap.api:location:latest.integration'
     // pic select
     compile 'com.zhihu.android:matisse:0.4.3'
 //    compile 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.1@aar'
     // Stetho调试
     compile 'com.facebook.stetho:stetho:1.5.0'
+    // GreenDAO
+    compile 'org.greenrobot:greendao:3.2.2' // add library
+    compile 'com.github.clans:fab:1.6.4'
+    // androidanimations
+    compile 'com.android.support:support-compat:25.1.1'
+    compile 'com.daimajia.easing:library:2.0@aar'
+    compile 'com.daimajia.androidanimations:library:2.2@aar'
+    // RxJava+Retrofit
+    compile 'com.zhouyou:rxeasyhttp:1.0.4'
+    // 百分比
+    compile 'com.zhy:percent-support-extends:1.1.1'
+
+    compile 'com.makeramen:roundedimageview:2.3.0'
+
+    // Banner
+//    compile 'com.github.pinguo-zhouwei:MZBannerView:v1.1.0'
+    compile project(':mzbanner')
+//    compile project(':library')
     testCompile 'junit:junit:4.12'
 
+    compile project(path: ':library')
 }

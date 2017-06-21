@@ -2,14 +2,12 @@ package com.lyqdhgo.environment.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.lyqdhgo.environment.R;
-import com.lyqdhgo.environment.util.ToastUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -21,6 +19,7 @@ import butterknife.ButterKnife;
 public class NormalRecyclerViewAdapter extends RecyclerView.Adapter<NormalRecyclerViewAdapter.NormalTextViewHolder> {
 
     private final LayoutInflater mLayoutInflater;
+    private onItemClickListener itemClickListener;
     private final Context mContext;
     private String[] mTitles;
 
@@ -36,8 +35,14 @@ public class NormalRecyclerViewAdapter extends RecyclerView.Adapter<NormalRecycl
     }
 
     @Override
-    public void onBindViewHolder(NormalTextViewHolder holder, int position) {
+    public void onBindViewHolder(final NormalTextViewHolder holder, final int position) {
         holder.mTextView.setText(mTitles[position]);
+        holder.mTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                itemClickListener.onItemClick(position,holder.mTextView);
+            }
+        });
     }
 
     @Override
@@ -52,13 +57,14 @@ public class NormalRecyclerViewAdapter extends RecyclerView.Adapter<NormalRecycl
         NormalTextViewHolder(View view) {
             super(view);
             ButterKnife.bind(this, view);
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    ToastUtils.showLongToast("click view->" + v.getId());
-                    Log.d("NormalTextViewHolder", "onClick--> position = " + getPosition());
-                }
-            });
         }
+    }
+
+    public interface onItemClickListener {
+        void onItemClick(int position,TextView textView);
+    }
+
+    public void setOnItemClickListener(onItemClickListener onItemClickListener) {
+        this.itemClickListener = onItemClickListener;
     }
 }

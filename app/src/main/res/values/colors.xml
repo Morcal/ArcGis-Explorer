@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#4285f4</color>
-    <color name="colorPrimaryDark">#3367d6</color>
+    <color name="colorPrimary">#ffffff</color>
+    <color name="colorPrimaryDark">#dddddd</color>
     <color name="colorAccent">#FFC400</color>
     <color name="bg">#F0F0F0</color>
     <color name="color_light_blue">#00DDB6</color>
@@ -73,6 +73,12 @@
     <color name="app_yellow_dark">#f09300</color>
     <color name="app_red">#db4437</color>
 
+    <!--main color-->
+    <color name="main_blue">#39b8ff</color>
+    <color name="main_red">#ff3d10</color>
+    <color name="main_green">#3ecc8b</color>
+    <color name="main_yellow">#ffe001</color>
+    <color name="main_zi">#8f11ff</color>
 
     <!-- This colours below are based on Danielle Vass colors file :
     https://gist.github.com/daniellevass/b0b8cfa773488e138037 -->

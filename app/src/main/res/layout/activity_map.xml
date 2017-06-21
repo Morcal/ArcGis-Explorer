@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fl_map"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.amap.api.maps.MapView
+        android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_margin="7dp"
+        android:background="@drawable/ic_menu_share"
+        android:visibility="gone" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/lv_task"
+        android:layout_width="300dp"
+        android:layout_height="350dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:background="#30666666"
+        android:fadingEdge="none" />
+
+    <com.github.clans.fab.FloatingActionButton
+        android:id="@+id/fab_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="3dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/ic_search"
+        app:fab_colorNormal="@color/green_primary"
+        app:fab_colorRipple="#99FFFFFF"
+        app:fab_hideAnimation="@anim/fab_scale_down"
+        app:fab_label=""
+        app:fab_shadowColor="#66000000"
+        app:fab_shadowRadius="4dp"
+        app:fab_shadowXOffset="1dp"
+        app:fab_shadowYOffset="3dp"
+        app:fab_showAnimation="@anim/fab_scale_up"
+        app:fab_showShadow="true"
+        app:fab_size="normal" />
+
+    <com.github.clans.fab.FloatingActionButton
+        android:id="@+id/fab_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/fab_search"
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="3dp"
+        android:layout_marginRight="8dp"
+        android:src="@drawable/ic_coordinates"
+        app:fab_colorNormal="@color/yellow_primary"
+        app:fab_colorRipple="#99FFFFFF"
+        app:fab_hideAnimation="@anim/fab_scale_down"
+        app:fab_label=""
+        app:fab_shadowColor="#66000000"
+        app:fab_shadowRadius="4dp"
+        app:fab_shadowXOffset="1dp"
+        app:fab_shadowYOffset="3dp"
+        app:fab_showAnimation="@anim/fab_scale_up"
+        app:fab_showShadow="true"
+        app:fab_size="normal" />
+
+    <com.github.clans.fab.FloatingActionButton
+        android:id="@+id/fab_model"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/fab_location"
+        android:layout_gravity="bottom|right"
+        android:layout_marginRight="8dp"
+        android:src="@drawable/ic_browse"
+        app:fab_colorNormal="@color/black"
+        app:fab_colorRipple="#99FFFFFF"
+        app:fab_hideAnimation="@anim/fab_scale_down"
+        app:fab_label=""
+        app:fab_shadowColor="#66000000"
+        app:fab_shadowRadius="4dp"
+        app:fab_shadowXOffset="1dp"
+        app:fab_shadowYOffset="3dp"
+        app:fab_showAnimation="@anim/fab_scale_up"
+        app:fab_showShadow="true"
+        app:fab_size="normal" />
+
+    <com.github.clans.fab.FloatingActionButton
+        android:id="@+id/fab_center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/fab_model"
+        android:layout_gravity="bottom|right"
+        android:layout_marginRight="8dp"
+        android:src="@drawable/ic_integral"
+        app:fab_colorNormal="@color/cyan_primary"
+        app:fab_colorRipple="#99FFFFFF"
+        app:fab_hideAnimation="@anim/fab_scale_down"
+        app:fab_label=""
+        app:fab_shadowColor="#66000000"
+        app:fab_shadowRadius="4dp"
+        app:fab_shadowXOffset="1dp"
+        app:fab_shadowYOffset="3dp"
+        app:fab_showAnimation="@anim/fab_scale_up"
+        app:fab_showShadow="true"
+        app:fab_size="normal" />
+
+    <LinearLayout
+        android:id="@+id/search_bar"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/fab_search"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@id/fab_search"
+        android:layout_marginBottom="3dp"
+        android:layout_marginRight="100dp"
+        android:layout_marginTop="3dp"
+        android:layout_toLeftOf="@id/fab_search"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/bg_searchbar_edit">
+
+            <EditText
+                android:id="@+id/search_edit"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:background="@null"
+                android:drawableLeft="@drawable/ic_search_api_holo_light"
+                android:drawablePadding="5dp"
+                android:gravity="center_vertical"
+                android:hint="搜索"
+                android:maxLines="1"
+                android:textSize="18sp">
+
+                <requestFocus />
+            </EditText>
+        </FrameLayout>
+
+        <Button
+            android:id="@+id/cancel_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="10dp"
+            android:background="@null"
+            android:text="取消"
+            android:textColor="#0099FF"
+            android:textSize="18sp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+</RelativeLayout>

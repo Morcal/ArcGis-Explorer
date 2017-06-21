@@ -11,8 +11,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.lyqdhgo.environment.R;
 import com.lyqdhgo.environment.common.base.BaseFragment;
 import com.zhihu.matisse.Matisse;
@@ -70,7 +71,7 @@ public class PhotosFragment extends BaseFragment {
         });
     }
 
-    private static class UriAdapter extends RecyclerView.Adapter<UriAdapter.UriViewHolder> {
+    private class UriAdapter extends RecyclerView.Adapter<UriAdapter.UriViewHolder> {
 
         private List<Uri> mUris;
 
@@ -82,14 +83,18 @@ public class PhotosFragment extends BaseFragment {
         @Override
         public UriViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             return new UriViewHolder(
-                    (TextView) LayoutInflater.from(parent.getContext()).inflate(R.layout.uri_item, parent, false));
+                    (ImageView) LayoutInflater.from(parent.getContext()).inflate(R.layout.uri_item, parent, false));
         }
 
 
         @Override
         public void onBindViewHolder(UriViewHolder holder, int position) {
             Uri uri = mUris.get(position);
-            holder.mUri.setText(uri.toString());
+            Glide.with(getActivity())
+                    .load(uri.toString())
+                    .dontAnimate()
+//                    .placeholder(R.drawable.loading_spinner)
+                    .into(holder.imageView);
         }
 
         @Override
@@ -97,13 +102,12 @@ public class PhotosFragment extends BaseFragment {
             return mUris == null ? 0 : mUris.size();
         }
 
-        static class UriViewHolder extends RecyclerView.ViewHolder {
+        class UriViewHolder extends RecyclerView.ViewHolder {
+            private ImageView imageView;
 
-            private TextView mUri;
-
-            UriViewHolder(TextView uri) {
+            UriViewHolder(ImageView uri) {
                 super(uri);
-                mUri = uri;
+                imageView = uri;
             }
         }
     }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/fl_map"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -27,108 +28,76 @@
         android:background="#30666666"
         android:fadingEdge="none" />
 
-    <!--<ScrollView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="170dp"-->
-    <!--android:layout_alignParentTop="true"-->
-    <!--android:layout_alignParentLeft="true"-->
-    <!--android:layout_marginLeft="5dp"-->
-    <!--android:layout_marginTop="5dp">-->
+    <com.github.clans.fab.FloatingActionButton
+        android:id="@+id/fab_integral"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="20dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="8dp"
+        android:src="@drawable/ic_integral"
+        app:fab_colorNormal="@color/green_primary"
+        app:fab_colorPressed="#E75043"
+        app:fab_colorRipple="#99FFFFFF"
+        app:fab_hideAnimation="@anim/fab_scale_down"
+        app:fab_label=""
+        app:fab_shadowColor="#66000000"
+        app:fab_shadowRadius="4dp"
+        app:fab_shadowXOffset="1dp"
+        app:fab_shadowYOffset="3dp"
+        app:fab_showAnimation="@anim/fab_scale_up"
+        app:fab_showShadow="true"
+        app:fab_size="normal" />
 
-    <!--<LinearLayout-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:background="#D999"-->
-    <!--android:orientation="vertical"-->
-    <!--android:paddingRight="5dp">-->
+    <com.github.clans.fab.FloatingActionButton
+        android:id="@+id/fab_coordinates"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="20dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_toLeftOf="@id/fab_integral"
+        android:src="@drawable/ic_coordinates"
+        app:fab_colorNormal="@color/yellow_primary"
+        app:fab_colorPressed="#E75043"
+        app:fab_colorRipple="#99FFFFFF"
+        app:fab_hideAnimation="@anim/fab_scale_down"
+        app:fab_label=""
+        app:fab_shadowColor="#66000000"
+        app:fab_shadowRadius="4dp"
+        app:fab_shadowXOffset="1dp"
+        app:fab_shadowYOffset="3dp"
+        app:fab_showAnimation="@anim/fab_scale_up"
+        app:fab_showShadow="true"
+        app:fab_size="normal" />
 
-    <!--<Button-->
-    <!--android:id="@+id/buttonScale"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="获取比例尺" />-->
-
-    <!--<LinearLayout-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:orientation="vertical">-->
-
-    <!--<CheckBox-->
-    <!--android:id="@+id/scale_toggle"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_weight="1"-->
-    <!--android:checked="false"-->
-    <!--android:text="比例尺" />-->
-
-    <!--<CheckBox-->
-    <!--android:id="@+id/zoom_toggle"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_weight="1"-->
-    <!--android:checked="true"-->
-    <!--android:text="缩放按钮" />-->
-
-    <!--<CheckBox-->
-    <!--android:id="@+id/compass_toggle"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_weight="1"-->
-    <!--android:checked="false"-->
-    <!--android:text="指南针" />-->
-
-    <!--<CheckBox-->
-    <!--android:id="@+id/mylocation_toggle"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_weight="1"-->
-    <!--android:checked="false"-->
-    <!--android:text="我的位置图层" />-->
-
-    <!--<CheckBox-->
-    <!--android:id="@+id/scroll_toggle"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_weight="1"-->
-    <!--android:checked="true"-->
-    <!--android:text="滑动手势" />-->
-
-    <!--<CheckBox-->
-    <!--android:id="@+id/zoom_gestures_toggle"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_weight="1"-->
-    <!--android:checked="true"-->
-    <!--android:text="缩放手势" />-->
-
-
-    <!--<RadioGroup-->
-    <!--android:id="@+id/logo_position"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_weight="1"-->
-    <!--android:checkedButton="@+id/bottom_left"-->
-    <!--android:orientation="vertical">-->
-
-    <!--<RadioButton-->
-    <!--android:id="@+id/bottom_left"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="左下" />-->
-
-    <!--<RadioButton-->
-    <!--android:id="@+id/bottom_center"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="底部居中" />-->
-
-    <!--<RadioButton-->
-    <!--android:id="@+id/bottom_right"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="右下" />-->
-    <!--</RadioGroup>-->
-    <!--</LinearLayout>-->
-    <!--</LinearLayout>-->
-    <!--</ScrollView>-->
+    <com.github.clans.fab.FloatingActionButton
+        android:id="@+id/fab_browse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="20dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_toLeftOf="@id/fab_coordinates"
+        android:src="@drawable/ic_browse"
+        app:fab_colorNormal="@color/black"
+        app:fab_colorPressed="#E75043"
+        app:fab_colorRipple="#99FFFFFF"
+        app:fab_hideAnimation="@anim/fab_scale_down"
+        app:fab_label=""
+        app:fab_shadowColor="#66000000"
+        app:fab_shadowRadius="4dp"
+        app:fab_shadowXOffset="1dp"
+        app:fab_shadowYOffset="3dp"
+        app:fab_showAnimation="@anim/fab_scale_up"
+        app:fab_showShadow="true"
+        app:fab_size="normal" />
 </RelativeLayout>

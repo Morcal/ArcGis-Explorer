@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 
 import com.lyqdhgo.environment.R;
 import com.lyqdhgo.environment.common.base.BaseMainFragment;
-import com.lyqdhgo.environment.ui.gic.child.GisLayerFragment;
 import com.lyqdhgo.environment.ui.gic.child.MapFragment;
 
 /**
@@ -61,5 +60,10 @@ public class ArcGisFragment extends BaseMainFragment {
     @Override
     public void onResume() {
         super.onResume();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
     }
 }

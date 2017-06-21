@@ -13,16 +13,11 @@
   See the License for the specific language governing permissions and
   limitations under the License.
   -->
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:gravity="center_vertical"
+    android:layout_width="150dp"
+    android:layout_height="150dp"
     android:paddingBottom="4dp"
+    android:id="@+id/image_photo"
     android:paddingLeft="24dp"
-    android:paddingTop="4dp"
-    android:text="@+id/uri"
-    android:textColor="@color/pink_primary"
-    android:textSize="16sp"
-    tools:text="https://www.zhihu.com"
-    tools:textColor="@android:color/black" />
+    android:paddingTop="4dp" />

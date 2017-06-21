@@ -2,6 +2,7 @@ package com.lyqdhgo.environment;
 
 import android.app.Activity;
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.multidex.MultiDex;
 import android.support.multidex.MultiDexApplication;
 import android.util.DisplayMetrics;
@@ -9,6 +10,8 @@ import android.view.Display;
 import android.view.WindowManager;
 
 import com.facebook.stetho.Stetho;
+import com.lyqdhgo.environment.greendao.gen.DaoMaster;
+import com.lyqdhgo.environment.greendao.gen.DaoSession;
 import com.lyqdhgo.environment.util.Utils;
 
 import java.util.ArrayList;
@@ -36,6 +39,12 @@ public class App extends MultiDexApplication {
     public static int SCREEN_HEIGHT = -1;
     public static float DIMEN_RATE = -1.0F;
     public static int DIMEN_DPI = -1;
+
+    // sql
+    private DaoMaster.DevOpenHelper mHelper;
+    private SQLiteDatabase db;
+    private DaoMaster mDaoMaster;
+    private DaoSession mDaoSession;
 
     public static App getInstance() {
         return app;
@@ -102,6 +111,8 @@ public class App extends MultiDexApplication {
         List list1 = Arrays.asList(tips);
         titles = new ArrayList(list1);
 
+        // set GreenDao
+        setDatabase();
         // 调试
         Stetho.initializeWithDefaults(this);
         // Realm
@@ -137,153 +148,28 @@ public class App extends MultiDexApplication {
 //                .build();
     }
 
-//    public class AppBlockCanaryContext extends BlockCanaryContext {
-//        // 实现各种上下文，包括应用标示符，用户uid，网络类型，卡慢判断阙值，Log保存位置等
-//
-//        /**
-//         * Implement in your project.
-//         *
-//         * @return Qualifier which can specify this installation, like version + flavor.
-//         */
-//        public String provideQualifier() {
-//            return "unknown";
-//        }
-//
-//        /**
-//         * Implement in your project.
-//         *
-//         * @return user id
-//         */
-//        public String provideUid() {
-//            return "uid";
-//        }
-//
-//        /**
-//         * Network type
-//         *
-//         * @return {@link String} like 2G, 3G, 4G, wifi, etc.
-//         */
-//        public String provideNetworkType() {
-//            return "unknown";
-//        }
-//
-//        /**
-//         * Config monitor duration, after this time BlockCanary will stop, use
-//         * with {@code BlockCanary}'s isMonitorDurationEnd
-//         *
-//         * @return monitor last duration (in hour)
-//         */
-//        public int provideMonitorDuration() {
-//            return -1;
-//        }
-//
-//        /**
-//         * Config block threshold (in millis), dispatch over this duration is regarded as a BLOCK. You may set it
-//         * from performance of device.
-//         *
-//         * @return threshold in mills
-//         */
-//        public int provideBlockThreshold() {
-//            return 1000;
-//        }
-//
-//        /**
-//         * Thread stack dump interval, use when block happens, BlockCanary will dump on main thread
-//         * stack according to current sample cycle.
-//         * <p>
-//         * Because the implementation mechanism of Looper, real dump interval would be longer than
-//         * the period specified here (especially when cpu is busier).
-//         * </p>
-//         *
-//         * @return dump interval (in millis)
-//         */
-//        public int provideDumpInterval() {
-//            return provideBlockThreshold();
-//        }
-//
-//        /**
-//         * Path to save log, like "/blockcanary/", will save to sdcard if can.
-//         *
-//         * @return path of log files
-//         */
-//        public String providePath() {
-//            return "/blockcanary/";
-//        }
-//
-//        /**
-//         * If need notification to notice block.
-//         *
-//         * @return true if need, else if not need.
-//         */
-//        public boolean displayNotification() {
-//            return true;
-//        }
-//
-//        /**
-//         * Implement in your project, bundle files into a zip file.
-//         *
-//         * @param src  files before compress
-//         * @param dest files compressed
-//         * @return true if compression is successful
-//         */
-//        public boolean zip(File[] src, File dest) {
-//            return false;
-//        }
-//
-//        /**
-//         * Implement in your project, bundled log files.
-//         *
-//         * @param zippedFile zipped file
-//         */
-//        public void upload(File zippedFile) {
-//            throw new UnsupportedOperationException();
-//        }
-//
-//
-//        /**
-//         * Packages that developer concern, by default it uses process name,
-//         * put high priority one in pre-order.
-//         *
-//         * @return null if simply concern only package with process name.
-//         */
-//        public List<String> concernPackages() {
-//            return null;
-//        }
-//
-//        /**
-//         * Filter stack without any in concern package, used with @{code concernPackages}.
-//         *
-//         * @return true if filter, false it not.
-//         */
-//        public boolean filterNonConcernStack() {
-//            return false;
-//        }
-//
-//        /**
-//         * Provide white list, entry in white list will not be shown in ui list.
-//         *
-//         * @return return null if you don't need white-list filter.
-//         */
-//        public List<String> provideWhiteList() {
-//            LinkedList<String> whiteList = new LinkedList<>();
-//            whiteList.add("org.chromium");
-//            return whiteList;
-//        }
-//
-//        /**
-//         * Whether to delete files whose stack is in white list, used with white-list.
-//         *
-//         * @return true if delete, false it not.
-//         */
-//        public boolean deleteFilesInWhiteList() {
-//            return true;
-//        }
-//
-//        /**
-//         * Block interceptor, developer may provide their own actions.
-//         */
-//        public void onBlock(Context context, BlockInfo blockInfo) {
-//
-//        }
-//    }
+    /**
+     * 设置greenDao
+     */
+    private void setDatabase() {
+        // 通过DaoMaster 的内部类 DevOpenHelper，你可以得到一个便利的SQLiteOpenHelper 对象。
+        // 可能你已经注意到了，你并不需要去编写「CREATE TABLE」这样的 SQL 语句，因为greenDAO 已经帮你做了。
+        // 注意：默认的DaoMaster.DevOpenHelper 会在数据库升级时，删除所有的表，意味着这将导致数据的丢失。
+        // 所以，在正式的项目中，你还应该做一层封装，来实现数据库的安全升级。
+        mHelper = new DaoMaster.DevOpenHelper(this, "notes-db", null);
+        db = mHelper.getWritableDatabase();
+        // 注意：该数据库连接属于DaoMaster，所以多个 Session 指的是相同的数据库连接。
+        mDaoMaster = new DaoMaster(db);
+        mDaoSession = mDaoMaster.newSession();
+
+    }
+
+    public DaoSession getDaoSession() {
+        return mDaoSession;
+    }
+
+
+    public SQLiteDatabase getDb() {
+        return db;
+    }
 }

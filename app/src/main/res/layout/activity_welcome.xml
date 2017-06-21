@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#E6E7E6"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        style="@style/navbar"
+        android:layout_width="fill_parent"
+        android:layout_height="72dp"
+        android:gravity="center_vertical">
+
+        <ImageButton
+            android:id="@+id/imageViewsetting"
+            android:layout_width="108dp"
+            android:layout_height="72dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@null"
+            android:padding="12dp"
+            android:scaleType="fitEnd"
+            android:src="@drawable/nav_home_setting" />
+
+        <TextView
+            android:id="@+id/textview_title"
+            style="@style/navbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:ellipsize="marquee"
+            android:gravity="center"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:singleLine="true"
+            android:text="水利水电环评" />
+
+        <ImageButton
+            android:id="@+id/imageViewhead"
+            android:layout_width="108dp"
+            android:layout_height="72dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="@null"
+            android:padding="12dp"
+            android:scaleType="fitStart"
+            android:src="@drawable/nav_home_head" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_weight="1"
+        android:background="@drawable/global_bg"
+        android:orientation="horizontal"
+        android:padding="4dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <com.lyqdhgo.environment.weight.MenuButton
+                android:id="@+id/button_menu_1"
+                android:layout_width="fill_parent"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_height="0dp"
+                android:layout_margin="4dp"
+                android:layout_weight="1" />
+
+            <FrameLayout
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="4dp"
+                android:layout_weight="1">
+
+                <com.lyqdhgo.environment.weight.MenuButton
+                    android:id="@+id/button_menu_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <View
+                        android:id="@+id/adjust_direct"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/transparent" />
+
+                    <View
+                        android:id="@+id/adjust_allocation"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/transparent" />
+                </LinearLayout>
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="4dp"
+                android:layout_weight="1">
+
+                <com.lyqdhgo.environment.weight.MenuButton
+                    android:id="@+id/button_menu_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="任务" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <View
+                        android:id="@+id/shelves"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/transparent" />
+
+                    <View
+                        android:id="@+id/shelvesother"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/transparent" />
+                </LinearLayout>
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="4dp"
+                android:layout_weight="1">
+
+                <com.lyqdhgo.environment.weight.MenuButton
+                    android:id="@+id/button_menu_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="蓝牙配对" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <View
+                        android:id="@+id/pandiankucun"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/transparent" />
+
+                    <View
+                        android:id="@+id/huicangjiaoyan"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/transparent" />
+                </LinearLayout>
+            </FrameLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
+

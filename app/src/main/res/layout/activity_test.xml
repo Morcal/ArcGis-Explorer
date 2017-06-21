@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="3dp"
+            android:layout_marginTop="3dp"
+            android:gravity="center_horizontal"
+            android:text="夹岩水利枢纽工程环境管理信息平台\n终端系统"
+            android:textSize="32sp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1">
+
+        <RelativeLayout
+            android:id="@+id/prl_async"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/item_bg">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_centerInParent="true"
+                android:drawablePadding="10dp"
+                android:drawableTop="@drawable/ic_async"
+                android:gravity="center_horizontal"
+                android:text="数据同步"
+                android:textColor="@color/gray_very_light"
+                android:textSize="23sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/prl_collect"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/item_bg">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:drawablePadding="10dp"
+                android:drawableTop="@drawable/ic_collect"
+                android:gravity="center_horizontal"
+                android:text="环境监测"
+                android:textColor="@color/gray_very_light"
+                android:textSize="23sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/prl_manager"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/item_bg">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_centerInParent="true"
+                android:drawablePadding="10dp"
+                android:drawableTop="@drawable/ic_manage"
+                android:gravity="center_horizontal"
+                android:text="环境监理"
+                android:textColor="@color/gray_very_light"
+                android:textSize="23sp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_weight="1">
+
+        <RelativeLayout
+            android:id="@+id/prl_all"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/item_bg">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:drawablePadding="10dp"
+                android:drawableTop="@drawable/ic_all"
+                android:gravity="center_horizontal"
+                android:text="综合服务"
+                android:textColor="@color/gray_very_light"
+                android:textSize="23sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/prl_analysis"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/item_bg">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_centerInParent="true"
+                android:drawablePadding="10dp"
+                android:drawableTop="@drawable/ic_anysis"
+                android:gravity="center_horizontal"
+                android:text="统计分析"
+                android:textColor="@color/gray_very_light"
+                android:textSize="23sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/prl_set"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/item_bg">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_centerInParent="true"
+                android:drawablePadding="10dp"
+                android:drawableTop="@drawable/ic_set"
+                android:gravity="center_horizontal"
+                android:text="PAD配置"
+                android:textColor="@color/gray_very_light"
+                android:textSize="23sp" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

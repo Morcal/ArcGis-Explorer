@@ -14,32 +14,137 @@
         android:text="CollectDataFragment"
         android:textColor="@color/amber_primary" />
 
-    <EditText
-        android:id="@+id/et_test1"
-        android:layout_width="80dp"
-        android:layout_height="48dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginRight="28dp"
-        android:layout_marginTop="23dp"
-        android:background="@drawable/edit_style"
-        android:hint="Data1"
-        android:textColor="@color/color_light_blue"
-        android:textColorHint="#00ce9b"
-        android:textCursorDrawable="@null"
-        android:textSize="15sp" />
-    <EditText
-        android:id="@+id/et_test2"
-        android:layout_width="80dp"
-        android:layout_height="48dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginRight="28dp"
-        android:layout_marginTop="23dp"
-        android:background="@drawable/edit_style"
-        android:hint="Data2"
-        android:textColor="@color/color_light_blue"
-        android:textColorHint="#00ce9b"
-        android:textCursorDrawable="@null"
-        android:textSize="15sp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:lines="1"
+            android:id="@+id/et_test1"
+            android:layout_width="80dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginRight="28dp"
+            android:layout_marginTop="23dp"
+            android:gravity="center"
+            android:hint="ID"
+            android:textColor="@color/color_light_blue"
+            android:textColorHint="#00ce9b"
+            android:textCursorDrawable="@null"
+            android:textSize="15sp" />
+
+        <EditText
+            android:lines="1"
+            android:id="@+id/et_test2"
+            android:layout_width="80dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginRight="28dp"
+            android:layout_marginTop="23dp"
+            android:gravity="center"
+            android:hint="Type"
+            android:textColor="@color/color_light_blue"
+            android:textColorHint="#00ce9b"
+            android:textCursorDrawable="@null"
+            android:textSize="15sp" />
+
+        <EditText
+            android:lines="1"
+            android:id="@+id/et_test3"
+            android:layout_width="80dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginRight="28dp"
+            android:layout_marginTop="23dp"
+            android:gravity="center"
+            android:hint="User"
+            android:textColor="@color/color_light_blue"
+            android:textColorHint="#00ce9b"
+            android:textCursorDrawable="@null"
+            android:textSize="15sp" />
+
+        <EditText
+            android:lines="1"
+            android:id="@+id/et_test4"
+            android:layout_width="80dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginRight="28dp"
+            android:layout_marginTop="23dp"
+            android:gravity="center"
+            android:hint="MinValue"
+            android:textColor="@color/color_light_blue"
+            android:textColorHint="#00ce9b"
+            android:textCursorDrawable="@null"
+            android:textSize="15sp" />
+
+        <EditText
+            android:lines="1"
+            android:id="@+id/et_test5"
+            android:layout_width="80dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginRight="28dp"
+            android:layout_marginTop="23dp"
+            android:gravity="center"
+            android:hint="MaxValue"
+            android:textColor="@color/color_light_blue"
+            android:textColorHint="#00ce9b"
+            android:textCursorDrawable="@null"
+            android:textSize="15sp" />
+
+        <EditText
+            android:lines="1"
+            android:id="@+id/et_test6"
+            android:layout_width="80dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginRight="28dp"
+            android:layout_marginTop="23dp"
+            android:gravity="center"
+            android:hint="Remark"
+            android:textColor="@color/color_light_blue"
+            android:textColorHint="#00ce9b"
+            android:textCursorDrawable="@null"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/but_insert"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:text="插入"
+            android:textColor="@color/red_primary" />
+
+        <Button
+            android:id="@+id/but_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:text="删除"
+            android:textColor="@color/red_primary" />
+        <Button
+            android:id="@+id/but_query_all"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:text="查询"
+            android:textColor="@color/red_primary" />
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycle_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="15dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <com.lyqdhgo.environment.weight.WaterRipplesView
         android:id="@+id/wave"
@@ -47,9 +152,9 @@
         android:layout_height="180dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
+        android:visibility="gone"
         app:waveColor="#00ce9b"
         app:waveCount="5"
-        android:visibility="gone"
         app:waveOnLoad="true" />
 
     <Button
@@ -58,13 +163,15 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
-        android:text="Submit" />
+        android:text="Submit"
+        android:visibility="gone" />
+
     <Button
-        android:visibility="gone"
         android:id="@+id/but_query"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
-        android:text="Breath" />
+        android:text="Breath"
+        android:visibility="gone" />
 </LinearLayout>
