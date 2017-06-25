@@ -145,4 +145,9 @@ dependencies {
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
     provided 'org.glassfish:javax.annotation:10.0-b28'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+
+    //retrofit
+    compile 'com.squareup.retrofit2:retrofit:2.0.0-beta3'
+    compile 'com.google.code.gson:gson:2.8.1'
+    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
 }

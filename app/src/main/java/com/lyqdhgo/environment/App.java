@@ -13,6 +13,7 @@ import com.facebook.stetho.Stetho;
 import com.lyqdhgo.environment.greendao.gen.DaoMaster;
 import com.lyqdhgo.environment.greendao.gen.DaoSession;
 import com.lyqdhgo.environment.util.Utils;
+import com.zhouyou.http.EasyHttp;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -115,6 +116,8 @@ public class App extends MultiDexApplication {
         setDatabase();
         // 调试
         Stetho.initializeWithDefaults(this);
+        // EasyHttp初始化
+        EasyHttp.init(this);//默认初始化
         // Realm
         Realm.init(this);
         RealmConfiguration config = new RealmConfiguration.Builder().build();

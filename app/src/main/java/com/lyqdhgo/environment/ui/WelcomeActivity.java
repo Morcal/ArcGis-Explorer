@@ -89,11 +89,11 @@ public class WelcomeActivity extends BaseActivity implements View.OnClickListene
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.prl_async:
-                if (!Constants.isLogin) {
-                    startActivity(new Intent(WelcomeActivity.this, LoginActivity.class));
-                } else {
+//                if (!Constants.isLogin) {
+//                    startActivity(new Intent(WelcomeActivity.this, LoginActivity.class));
+//                } else {
                     startActivity(new Intent(WelcomeActivity.this, AsnycActivity.class));
-                }
+//                }
                 break;
             case R.id.prl_collect:
                 if (!Constants.isLogin) {
